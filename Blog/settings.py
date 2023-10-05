@@ -13,7 +13,9 @@ SECRET_KEY = 'django-insecure-bl)3*ozrbtfdzrw4m@3tdggf!iqprkt^g9p%*tb-skf1&3^ob6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "blogify-lc3l.onrender.com","127.0.0.1"
+]
 
 
 # Application definition
