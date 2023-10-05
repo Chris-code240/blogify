@@ -1,0 +1,71 @@
+{% load static %}
+<header class="sticky top-0 container mx-auto w-full bg-white">
+    <nav class="flex items-center justify-between py-1 w-full">
+        <a href="/api/home">
+            <p class="text-3xl font-bold logo-text">BlogiFY</p>
+        </a>
+        <div class="md:flex items-center hidden space-x-3">
+            <input type="search" id="search" class="focus:outline-none bg-Grayish py-2 px-3 p-1 rounded-full w-96 placeholder-gray-600" placeholder="Search a post">
+                {% if user %}
+                <div class="cursor-pointer p-1 py-2 px-2 rounded-full bg-gray-600 text-white">
+                    <div class="flex items-center justify-center space-x-1" data-t="{{ token }}" id="user-btn">
+                        <img src="{% static 'images/christian.webp' %}" class="w-[2rem] rounded-full" alt="">
+                        <span>Chris</span>
+                    </div>
+                </div>
+                {% else %}
+                    {% if login %}
+                    <div class="p-1 px-2 rounded-full bg-gray-600 text-white" id="user-btn">
+                        <a href="/api/auth/?next={{ request.path }}">
+                            <div class="cursor-pointer flex items-center justify-center space-x-1">
+                                <img src="{% static 'images/profile.svg' %}" class="w-[2rem] rounded-full" alt="">
+                                <span>Login</span>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endif %}
+        </div>
+        <!-- <div class="md:hidden cursor-pointer w-24 p-1 px-1 py-1 rounded-full bg-gray-600 text-white">
+            <div class="flex items-center justify-center space-x-2">
+                <img src="{% static 'images/christian.webp' %}" class="rounded-full w-[2rem]" alt="">
+                <span>Chris</span>
+            </div>
+        </div> -->
+
+        {% if user %}
+                <div class="md:hidden cursor-pointer p-1 py-2 px-2 rounded-full bg-gray-600 text-white">
+                    <div class="flex items-center justify-center space-x-1" data-t="{{ token }}" id="user-btn">
+                        <img src="{% static 'images/christian.webp' %}" class="w-[2rem] rounded-full" alt="">
+                        <span>Chris</span>
+                    </div>
+                </div>
+                {% else %}
+                    {% if login %}
+                    <a href="/api/auth/?next={{ request.path }}" class="md:hidden">
+                        <div class="md:hidden p-1 px-2 rounded-full bg-gray-600 text-white" id="user-btn">
+                        
+                            <div class="cursor-pointer flex items-center justify-center space-x-1">
+                                <img src="{% static 'images/profile.svg' %}" class="w-[2rem] rounded-full" alt="">
+                                <span>Login</span>
+                            </div>
+                    </div>
+                    </a>
+                    {% endif %}
+                {% endif %}
+
+    </nav>
+    <input type="text" id="search-sm" class="md:hidden focus:outline-none bg-Grayish py-1 px-3 p-1 rounded-sm w-full my-2 placeholder-gray-600" placeholder="Search a post">
+
+    <div class="hidden results px-3 py-2 absolute md:top-[7vh] top-[13.5vh] right-0 md:right-[5%]  rounded-md md:w-[35%] w-full" id="res">
+        <div class="flex flex-col space-y-2 w-full" id="results-container">
+        </div>
+    </div>
+
+    <div class="hidden results px-3 py-2 absolute md:top-[7vh] top-[13.5vh] right-0 md:right-[5%]  rounded-md md:w-[35%] w-full" id="res-sm">
+        <div class="flex flex-col space-y-2 w-full" id="results-container">
+        </div>
+    </div>
+</header>
+<script src="{% static 'js/header.js' %}"></script>
+<div class="w-full p-[1px] bg-Whitish"></div>

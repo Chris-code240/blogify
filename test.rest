@@ -1,0 +1,59 @@
+GET http://127.0.0.1:8000/api/
+
+###
+
+POST http://127.0.0.1:8000/api/delete/
+Content-Type: application/json
+
+{ "username": "Chris240"}
+
+###
+POST http://127.0.0.1:8000/api/verify-token/
+Authorization: Token bdd43e010edc9662a69105e945aa2ddaa313cc41
+
+###
+GET http://127.0.0.1:8000/api/verified/login?token=bdd43e010edc9662a69105e945aa2ddaa313cc41
+
+###
+POST http://127.0.0.1:8000/api/add-post/
+Content-Type: multipart/form-data; boundary=b1234
+
+--b1234
+Content-Disposition: form-data; name="username"
+
+Chris240
+--b1234
+Content-Disposition: form-data; name="title"
+
+The Post Title
+--b1234
+Content-Disposition: form-data; name="text"
+
+ 
+--b1234
+Content-Disposition: form-data; name="image"; filename="peoplecrossingroad.jpg"
+Content-Type: image/jpeg
+
+@./app/static/images/peoplecrossingroad.jpg
+--b1234--
+
+
+###
+POST http://127.0.0.1:8000/api/delete-post/
+Content-Type: application/json
+
+{ "id":16 }
+
+
+###
+GET http://127.0.0.1:8000/api/post/image/?image_id=9
+
+###
+POST http://127.0.0.1:8000/api/login/user/
+Content-Type: application/json
+
+{ "id": "duah.marfochristian@gmail.com" , "password":"Liukangs@240"}
+
+
+
+

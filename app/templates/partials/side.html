@@ -1,0 +1,31 @@
+{% load static %}
+<div class="hidden md:block border-l-2 border-l-Whitish w-[30%] h-[92vh]">
+    <div class="flex flex-col px-1">
+        <!-- Arthour info -->
+        <div class="author-info">
+            <img src="/api{{ profile.image.url }}" class="w-48 mx-auto" alt="">
+            <div class="flex justify-center">
+                <p class="text-gray-500">{{author.first_name}} {{author.last_name}}</p><sup><b>.</b></sup>
+                <p class="text-gray-400">Backend Developer</p>
+            </div>
+            <p class="text-blue-400 text-center"><i class="fa fa-globe"></i><a href="https://christian-duah-marfo.netlify.app">My Website</a></p>
+        </div>
+         <!-- More from author -->
+         <h1 class="text-2xl text-center font-bol my-2">More from <span>{{author.first_name}}</span></h1>
+
+         <!-- posts -->
+         <div class="flex flex-col w-full">
+            {% for post in posts_by_author %}
+                <div class="post bg-Whitish px-1 py-2 w-full cursor-pointer hover:bg-gray-300">
+                    <div class="flex w-full space-x-3">
+                        <img src="/api{{post.image.url}}" class="w-[6rem]" alt="">
+                        <div class="flex flex-col">
+                            <h1 class="text-gray-500 font-bold">{{post.title}}</h1>
+                            <p>{{post.get_some_words}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+         </div>
+    </div>
+</div>

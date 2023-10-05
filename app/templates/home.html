@@ -1,0 +1,44 @@
+
+{% extends 'layout/layout.html' %}
+{% load static %}
+{% block content %}
+<section class="container mx-auto md:w-[70%] main">
+    {% if addBtn %}
+    <a href="http://127.0.0.1:8000/api/addpost/" class="fixed add-btn right-0 md:right-[5%]" title="Add Post">
+        <div class="p-5 rounded-full bg-Blue text-Whitish text-center flex items-center justify-center">
+            <i class="fa fa-plus text-3xl"></i>
+        </div>
+    </a>
+    {% endif %}
+    <img src="/api{{ post.image.url }}" class="w-full md:h-[50vh]" alt="">
+    <!-- <img src="{%static 'images/people crossing road.jpg'%}" class="w-full md:h-[50vh]" alt=""> -->
+
+    <h1 class="text-4xl font-bold text-center">{{post.title}}</h1>
+ 
+    <div class="w-full text">
+        {% for p in post.get_paragraphs %}
+        <p>{{p}}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Comments -->
+    <form action="" class="my-6" id="commentForm" data-d="{{ post.id }}">
+        <p class="text-gray-500 text-3xl my-3">Comments</p>
+        <div class="flex justify-between items-center">
+            <input type="text" placeholder="Your comment" class="md:w-[70%] w-full border-2 border-gray-400 md:rounded-xl py-1 p-1 focus:outline-none">
+        <button type="submit" class="py-1 border-2 border-Blue px-6 w-48 md:w-auto text-Whitish md:rounded-lg bg-Blue">Comment</button>
+        </div>
+    </form>
+    <div class="w-full space-y-3" id="comments">
+        {% if comments %}
+            {% for c in comments %}
+                <div class="comment">
+                    <p class="text-gray-400">{{c.user.username}}</p>
+                    <p>{{c.text}}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</section>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind commponents;
+
+*{
+    transition: all .3s ease;
+}
+body{
+    min-height: 100vh;
+}
+
+.text p:nth-child(1):first-letter{
+    font-size: 4rem;
+}
+header{
+    z-index: 10;
+    background-color: white !important;
+}
+.logo-text{
+    position: relative;
+}
+.logo-text::before{
+    position: absolute;
+    left: 4%;
+    content: 'BlogiFY';
+    color: #10262c;
+}
+.logo-text::after{
+    position: absolute;
+    left: 6%;
+    content: 'BlogiFY';
+    color: #fc4f57;
+}
+#password{
+    position: relative;
+}
+#password::after{
+    content: "Contains atleast a symbol and a digit";
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.add-btn{
+    bottom: 10%;
+}
+
+.results{
+    position: fixed;
+    background-color: rgba(163, 159, 159, 0.24);
+    /* top: 7vh; md
+    top:13.5vh;
+    /* right: 5%; md */
+    /* right: 0; */
+}
